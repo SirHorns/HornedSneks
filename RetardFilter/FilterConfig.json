@@ -1,0 +1,6 @@
+{
+  "prefix": ".rtf",
+  "delay": 30000,
+  "interval": 15000,
+  "cacheSize": 100
+}

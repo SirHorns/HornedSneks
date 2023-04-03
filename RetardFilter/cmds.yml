@@ -1,0 +1,12 @@
+ddelay:
+  desc: "Sets the delete delay on filtered messages."
+  args:
+    - "Delete delay in seconds"
+ccap:
+  desc: "Sets how many messages the cache will keep up with before it deletes the oldest cached messages. (Default: 100)"
+  args:
+    - "Cache-Cap"
+interval:
+  desc: "Sets how often the bot triggers a cleanup. If set to high then messages can linger past the delete delay time."
+  args:
+    - "Cleanup interval in milliseconds."
