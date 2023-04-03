@@ -1,0 +1,4 @@
+command: 
+  desc: "Use this to give a user a hug"
+  args:
+    - "@Someone"

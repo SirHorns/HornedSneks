@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetardFilter", "RetardFilter\RetardFilter.csproj", "{3F7595F2-3B84-48A3-967E-69A4657E4DD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralModule", "GeneralModule\GeneralModule.csproj", "{1F770264-6847-4E52-AF98-3D6BA14086F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateModule", "TemplateModule\TemplateModule.csproj", "{11E5B02B-973B-46C3-9F6F-0737604CE0AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{3F7595F2-3B84-48A3-967E-69A4657E4DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F7595F2-3B84-48A3-967E-69A4657E4DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F7595F2-3B84-48A3-967E-69A4657E4DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F770264-6847-4E52-AF98-3D6BA14086F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F770264-6847-4E52-AF98-3D6BA14086F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F770264-6847-4E52-AF98-3D6BA14086F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F770264-6847-4E52-AF98-3D6BA14086F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E5B02B-973B-46C3-9F6F-0737604CE0AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E5B02B-973B-46C3-9F6F-0737604CE0AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E5B02B-973B-46C3-9F6F-0737604CE0AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E5B02B-973B-46C3-9F6F-0737604CE0AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
