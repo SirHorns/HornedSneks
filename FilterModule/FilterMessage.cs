@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace RetardFilter;
+namespace FilterModule;
 
 public class FilterMessage
 {

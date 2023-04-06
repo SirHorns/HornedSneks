@@ -1,25 +1,24 @@
-using System.Threading.Channels;
 using Discord;
 using Nadeko.Snake;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace RetardFilter;
+namespace FilterModule;
 
 
 /// <summary>
 /// 
 /// </summary>
-public sealed class RetardFilter : Snek
+public sealed class FilterModule : Snek
 {
     public override string Prefix { get; } = ".rtf";
 
     private FilterConfig _filterConfig;
 
-    private List<FilterMessage> NoNoMessages;
-    private string ConfigFile { get; set; } = "data/Medusae/RetardFilter/FilterConfig.json";
-    private string FilterFile  { get; set; }= "data/Medusae/RetardFilter/Filter.json";
-    private string CacheFile { get; set; } = "data/Medusae/RetardFilter/FilterCache.json";
+    private List<FilterMessage> Messages { get; set; }
+    private string ConfigFile { get; set; } = "data/Medusae/FilterModule/FilterConfig.json";
+    private string FilterFile  { get; set; }= "data/Medusae/FilterModule/Filter.json";
+    private string CacheFile { get; set; } = "data/Medusae/FilterModule/FilterCache.json";
     
     private string[] Filter { get; set; }
 
@@ -67,9 +66,9 @@ public sealed class RetardFilter : Snek
             Time = time
         };
 
-        NoNoMessages.Add(filteredMessage);
+        Messages.Add(filteredMessage);
             
-        File.WriteAllText(CacheFile, JsonConvert.SerializeObject(NoNoMessages));
+        File.WriteAllText(CacheFile, JsonConvert.SerializeObject(Messages));
     }
 
     private async Task CleanUp()
@@ -79,9 +78,9 @@ public sealed class RetardFilter : Snek
             await Task.Delay((int)_filterConfig.Interval);
             
             var time = (int)(DateTime.Now - new DateTime(1970, 1, 1)).TotalSeconds;
-            for (var i = 0; i < NoNoMessages.Count; i++)
+            for (var i = 0; i < Messages.Count; i++)
             {
-                var msg = NoNoMessages[i];
+                var msg = Messages[i];
                 
                 var elapsed = time - msg.Time;
                 if (elapsed < _filterConfig.Delay)
@@ -89,7 +88,7 @@ public sealed class RetardFilter : Snek
                     continue;
                 }
                 await msg.Delete();
-                NoNoMessages.RemoveAt(i);
+                Messages.RemoveAt(i);
             }
         }
     }
@@ -97,7 +96,7 @@ public sealed class RetardFilter : Snek
     private async void OnLoadCleanup()
     {
         var time = (int)(DateTime.Now - new DateTime(1970, 1, 1)).TotalSeconds;
-        foreach (var msg in NoNoMessages)
+        foreach (var msg in Messages)
         {
             var elapsed = time - msg.Time;
             if (elapsed > 5)
@@ -144,17 +143,17 @@ public sealed class RetardFilter : Snek
         {
             using StreamReader file = File.OpenText(CacheFile);
             using JsonTextReader reader = new JsonTextReader(file);
-            NoNoMessages = JToken.ReadFrom(reader).ToObject<List<FilterMessage>>();
+            Messages = JToken.ReadFrom(reader).ToObject<List<FilterMessage>>();
 
-            if (NoNoMessages.Count > 0)
+            if (Messages.Count > 0)
             {
                 OnLoadCleanup(); 
             }
         }
         else
         {
-            NoNoMessages = new((int)_filterConfig.CacheSize);
-            File.WriteAllText(CacheFile, JsonConvert.SerializeObject(NoNoMessages));
+            Messages = new((int)_filterConfig.CacheSize);
+            File.WriteAllText(CacheFile, JsonConvert.SerializeObject(Messages));
         }
 
         Task.Run(CleanUp);

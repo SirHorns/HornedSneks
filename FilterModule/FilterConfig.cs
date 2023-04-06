@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace RetardFilter;
+namespace FilterModule;
 
 public class FilterConfig
 {
@@ -22,6 +21,6 @@ public class FilterConfig
 
     public void WriteFile()
     {
-        File.WriteAllText(Path.GetFullPath("data/Medusae/RetardFilter/FilterConfig.json"), JsonConvert.SerializeObject(this, Formatting.Indented));
+        File.WriteAllText(Path.GetFullPath("data/Medusae/FilterModule/FilterConfig.json"), JsonConvert.SerializeObject(this, Formatting.Indented));
     }
 }
