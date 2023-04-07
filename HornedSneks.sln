@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterModule", "FilterModule\FilterModule.csproj", "{3F7595F2-3B84-48A3-967E-69A4657E4DD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetardFilter", "RetardFilter\RetardFilter.csproj", "{3F7595F2-3B84-48A3-967E-69A4657E4DD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralModule", "GeneralModule\GeneralModule.csproj", "{1F770264-6847-4E52-AF98-3D6BA14086F9}"
 EndProject

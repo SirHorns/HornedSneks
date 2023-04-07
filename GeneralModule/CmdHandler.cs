@@ -23,43 +23,25 @@ public class CmdHandler
             Console.WriteLine($"GeneralModule Config.json not found. Commands will not display correctly without the config file.\n {dir}");
             return;
         }
+        
         var json = File.ReadAllText(dir);
         var data = JObject.Parse(json);
         ImgurClientId = data["imgurAPI"]["clientId"].ToObject<string>();
         var cmds = data["cmds"];
 
-        HugCmd = new Hug(
-            cmds["hug"]["accept"].ToObject<string[]>(),
-            cmds["hug"]["reject"].ToObject<string[]>());
+        HugCmd = new Hug(cmds["hug"]["accept"].ToObject<string[]>(), cmds["hug"]["reject"].ToObject<string[]>());
 
-        PatCmd = new Pat(
-            cmds["pat"]["imgurAlbum"].ToObject<string>(),
-            cmds["pat"]["imageUrls"].ToObject<string[]>(),
-            cmds["pat"]["videoUrls"].ToObject<string[]>());
+        PatCmd = new Pat(cmds["pat"]["imgurAlbum"].ToObject<string>(), cmds["pat"]["imageUrls"].ToObject<string[]>(), cmds["pat"]["videoUrls"].ToObject<string[]>());
         
-        RapeCmd = new Rape(
-            cmds["rape"]["overpower"].ToObject<string[]>(),
-            cmds["rape"]["butgay"].ToObject<string[]>());
+        RapeCmd = new Rape(cmds["rape"]["overpower"].ToObject<string[]>(), cmds["rape"]["butgay"].ToObject<string[]>());
         
-        KissCmd = new Kiss(
-            cmds["kiss"]["imgurAlbum"].ToObject<string>(),
-            cmds["kiss"]["imageUrls"].ToObject<string[]>(),
-            cmds["kiss"]["videoUrls"].ToObject<string[]>());
+        KissCmd = new Kiss(cmds["kiss"]["imgurAlbum"].ToObject<string>(), cmds["kiss"]["imageUrls"].ToObject<string[]>());
         
-        GoodNightCmd = new GoodNight(
-            cmds["goodNight"]["imgurAlbum"].ToObject<string>(),
-            cmds["goodNight"]["imageUrls"].ToObject<string[]>(),
-            cmds["goodNight"]["videoUrls"].ToObject<string[]>());
+        GoodNightCmd = new GoodNight(cmds["goodNight"]["videoUrls"].ToObject<string[]>());
         
-        FightCmd = new Fight(
-            cmds["fight"]["imgurAlbum"].ToObject<string>(),
-            cmds["fight"]["imageUrls"].ToObject<string[]>(),
-            cmds["fight"]["videoUrls"].ToObject<string[]>());
+        FightCmd = new Fight(cmds["fight"]["success"].ToObject<string[]>(), cmds["fight"]["failed"].ToObject<string[]>());
         
-        LoreCmd = new Lore(
-            cmds["lore"]["imgurAlbum"].ToObject<string>(), 
-            cmds["lore"]["imageUrls"].ToObject<string[]>(),
-            cmds["lore"]["videoUrls"].ToObject<string[]>());
+        LoreCmd = new Lore(cmds["lore"]["imgurAlbum"].ToObject<string>(), cmds["lore"]["imageUrls"].ToObject<string[]>(), cmds["lore"]["videoUrls"].ToObject<string[]>());
     }
     public static async Task<string> RandomAlbumImage(string id)
     {

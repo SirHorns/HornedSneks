@@ -36,5 +36,8 @@
       <None Update="res.yml;cmds.yml;strings/**">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Config.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
   </ItemGroup>
 </Project>
