@@ -78,8 +78,7 @@ public sealed class RetardFilter : Snek
     {
         while (true)
         {
-            await Task.Delay((int)_filterConfig.Interval);
-            Console.Write("\n[CleanUp]\n");
+            await Task.Delay(_filterConfig.Interval * 2);
             
             var time = (int)(DateTime.Now - new DateTime(1970, 1, 1)).TotalSeconds;
             for (var i = 0; i < Messages.Count; i++)
@@ -91,7 +90,7 @@ public sealed class RetardFilter : Snek
                 {
                     continue;
                 }
-                msg.Delete();
+                await msg.Delete();
                 Messages.RemoveAt(i);
             }
 
@@ -104,7 +103,7 @@ public sealed class RetardFilter : Snek
 
             if (log.Count > 0)
             {
-                File.WriteAllTextAsync(FilterLog, JsonConvert.SerializeObject(log));
+                await File.WriteAllTextAsync(FilterLog, JsonConvert.SerializeObject(log));
             }
         }
     }

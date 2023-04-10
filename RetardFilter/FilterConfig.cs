@@ -4,23 +4,34 @@ namespace RetardFilter;
 
 public class FilterConfig
 {
-    public double Delay { get; set; }
-    public double Interval { get; set; }
+    public int Delay { get; set; }
+    public int Interval { get; set; }
     public string[] Filter { get; set; }
 
     public FilterConfig()
     {
-        Delay = 1800;
-        Interval = 15000;
+        Delay = 30 * 60;
+        Interval = 15 * 60000;
         Filter = new[]{""};
+        
+        Console.WriteLine("==Filter Config Loaded==\n" +
+                          $"Delay: {Delay/60}m\n" +
+                          $"Interval: {Interval/60000}m\n" +
+                          $"Filter: {Filter}\n" +
+                          "========================");
     }
 
-    public FilterConfig(double delay, double interval, string[] filter)
+    public FilterConfig(int delay, int interval, string[] filter)
     {
-        Delay = delay;
-        var intv =interval * 1000;
-        Interval = intv;
+        Delay = delay * 60;
+        Interval = interval * 60000;
         Filter = filter;
+        
+        Console.WriteLine("==Filter Config Loaded==\n" +
+                          $"Delay: {Delay/60}m\n" +
+                          $"Interval: {Interval/60000}m\n" +
+                          $"Filter: {Filter}\n" +
+                          "========================");
     }
 
     public void WriteFile()

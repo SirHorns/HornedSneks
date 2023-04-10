@@ -18,6 +18,6 @@ public class FilterMessage
         Console.Write("Removing Message:\n" +
                       $"ID:[{Message.Id}]\n" +
                       $"Content: {Message.Content}");
-        Message.DeleteAsync();
+        await Message.DeleteAsync();
     }
 }
